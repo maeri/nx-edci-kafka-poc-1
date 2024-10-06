@@ -8,3 +8,18 @@ spring:
     request-topic: request-topic
     reply-topic: reply-topic
 
+logging:
+  level:
+    org:
+      # spring logging on error only
+      springframework:
+        web: ERROR
+      # kafka logging on error only
+      apache:
+        kafka: ERROR
+    eu:
+      ec:
+        empl:
+          edci:
+            async:
+              poc: DEBUG

@@ -14,6 +14,8 @@ import org.springframework.kafka.core.*;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.requestreply.ReplyingKafkaTemplate;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,6 +72,8 @@ public class KafkaConfig {
     ConcurrentKafkaListenerContainerFactory<String, String> factory) {
     ConcurrentMessageListenerContainer<String, String> replyContainer = factory.createContainer(replyTopic);
     replyContainer.getContainerProperties().setGroupId("replying-group");
-    return new ReplyingKafkaTemplate<>(pf, replyContainer);
+    ReplyingKafkaTemplate<String, String, String> template = new ReplyingKafkaTemplate<>(pf, replyContainer);
+    template.setDefaultReplyTimeout(Duration.of(3, ChronoUnit.SECONDS));
+    return template;
   }
 }

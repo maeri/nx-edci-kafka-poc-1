@@ -1,0 +1,7 @@
+bootlib:
+  service:
+    message: bootlibasdasdasd
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:29092

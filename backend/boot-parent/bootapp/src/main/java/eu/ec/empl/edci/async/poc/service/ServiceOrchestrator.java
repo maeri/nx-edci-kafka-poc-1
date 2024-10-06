@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class ServiceOrchestrator {
 
-    private final ServiceRequester requester;
+  private final ServiceRequester requester;
 
     public String callServiceBAndWaitForResponse(String message, String correlationId) throws Exception {
         log.info("Sending request with correlationId: {}", correlationId);
@@ -23,7 +23,7 @@ public class ServiceOrchestrator {
         try {
             requester.sendRequest(message, correlationId);
             String response = responseFuture.get(3, TimeUnit.SECONDS);
-            log.info("Received response for correlationId: {}", correlationId);
+            log.info("Received response {} for correlationId: {}", response, correlationId);
             return response;
         } catch (TimeoutException e) {
             log.error("Timeout waiting for response. CorrelationId: {}", correlationId);

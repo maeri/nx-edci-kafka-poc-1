@@ -1,0 +1,8 @@
+bootlib:
+  service:
+    message: bootlibasdasdasd
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+

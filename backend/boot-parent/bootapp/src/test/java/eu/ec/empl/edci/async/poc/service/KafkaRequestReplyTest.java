@@ -49,67 +49,67 @@ class KafkaRequestReplyTest {
     registry.add("spring.kafka.bootstrap-servers", kafkaContainer::getBootstrapServers);
   }
 
-//  @Test
-//  @Order(1)
-//  void kafkaContainerIsRunning() {
-//    assertTrue(kafkaContainer.isRunning());
-//  }
-//
-//  @Test
-//  @Order(2)
-//  void canGetBootstrapServers() {
-//    String bootstrapServers = kafkaContainer.getBootstrapServers();
-//    assertNotNull(bootstrapServers);
-//    log.debug("Bootstrap servers: {}", bootstrapServers);
-//    assertFalse(bootstrapServers.isEmpty());
-//  }
-//
-//  @Test
-//  @Order(3)
-//  void canCreateTopic() throws Exception {
-//    String topicName = "test-topic";
-//    kafkaAdmin.createOrModifyTopics(new NewTopic(topicName, 1, (short) 1));
-//
-//    try (
-//        AdminClient adminClient = AdminClient.create
-//            (Map.of(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaContainer.getBootstrapServers())) ) {
-//
-//      Set<String> topics = adminClient.listTopics().names().get();
-//      assertTrue(topics.contains(topicName));
-//
-//    }
-//  }
-//
-//  @Test
-//  @Order(4)
-//  void canProduceAndConsumeMessages() throws Exception {
-//    //given
-//    String topicName = "test-topic";
-//    String testMessage = "Hello, Kafka!";
-//
-//    Properties props = new Properties();
-//    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaContainer.getBootstrapServers());
-//    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-//    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-//
-//    //when
-//    try (KafkaProducer<String, String> producer = new KafkaProducer<>(props)) {
-//      producer.send(new ProducerRecord<>(topicName, testMessage)).get();
-//    }
-//
-//    props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
-//    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-//    props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-//    props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-//
-//    try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)) {
-//      consumer.subscribe(Collections.singletonList(topicName));
-//      //then
-//      ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
-//      assertFalse(records.isEmpty());
-//      assertEquals(testMessage, records.iterator().next().value());
-//    }
-//  }
+  @Test
+  @Order(1)
+  void kafkaContainerIsRunning() {
+    assertTrue(kafkaContainer.isRunning());
+  }
+
+  @Test
+  @Order(2)
+  void canGetBootstrapServers() {
+    String bootstrapServers = kafkaContainer.getBootstrapServers();
+    assertNotNull(bootstrapServers);
+    log.debug("Bootstrap servers: {}", bootstrapServers);
+    assertFalse(bootstrapServers.isEmpty());
+  }
+
+  @Test
+  @Order(3)
+  void canCreateTopic() throws Exception {
+    String topicName = "test-topic";
+    kafkaAdmin.createOrModifyTopics(new NewTopic(topicName, 1, (short) 1));
+
+    try (
+        AdminClient adminClient = AdminClient.create
+            (Map.of(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaContainer.getBootstrapServers())) ) {
+
+      Set<String> topics = adminClient.listTopics().names().get();
+      assertTrue(topics.contains(topicName));
+
+    }
+  }
+
+  @Test
+  @Order(4)
+  void canProduceAndConsumeMessages() throws Exception {
+    //given
+    String topicName = "test-topic";
+    String testMessage = "Hello, Kafka!";
+
+    Properties props = new Properties();
+    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaContainer.getBootstrapServers());
+    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+
+    //when
+    try (KafkaProducer<String, String> producer = new KafkaProducer<>(props)) {
+      producer.send(new ProducerRecord<>(topicName, testMessage)).get();
+    }
+
+    props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
+    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+    props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+
+    try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)) {
+      consumer.subscribe(Collections.singletonList(topicName));
+      //then
+      ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
+      assertFalse(records.isEmpty());
+      assertEquals(testMessage, records.iterator().next().value());
+    }
+  }
 
   @Test
   @Order(5)
