@@ -1,0 +1,11 @@
+{
+  "name": "@nx-multi-stacks-monorepo/nglib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@nx-multi-stacks-monorepo/commonlib": "*"
+  },
+  "dependencies": {},
+  "sideEffects": false
+}
