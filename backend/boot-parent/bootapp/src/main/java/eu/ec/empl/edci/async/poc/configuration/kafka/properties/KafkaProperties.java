@@ -1,4 +1,4 @@
-package eu.ec.empl.edci.async.poc.configuration;
+package eu.ec.empl.edci.async.poc.configuration.kafka.properties;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -28,7 +28,7 @@ public class ServiceRequester {
   }
 
   public void sendRequest(String message, String correlationId) {
-    log.info("Processed: {} , Correlation ID: {}", message, correlationId);
+    log.info("Service Requester processed: {} , Correlation ID: {}", message, correlationId);
     ProducerRecord<String, String> record = new ProducerRecord<>(requestTopic, message);
     record.headers().add(new RecordHeader("kafka_correlationId", correlationId.getBytes()));
     replyingKafkaTemplate.send(record);
