@@ -513,3 +513,4 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 - [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
 - [Follow us on Twitter](https://twitter.com/nxdevtools)
 # nx-edci-kafka-poc-1
+# nx-edci-kafka-poc-1
