@@ -11,6 +11,9 @@
   ],
   "targets": {
     "build": {
+      "allowedCommonJsDependencies": [
+        "sockjs-client"
+      ],
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": [
         "{options.outputPath}"
@@ -19,9 +22,7 @@
         "outputPath": "dist/frontend/apps/ngapp",
         "index": "frontend/apps/ngapp/src/index.html",
         "main": "frontend/apps/ngapp/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": "frontend/apps/ngapp/src/polyfills.ts",
         "tsConfig": "frontend/apps/ngapp/tsconfig.app.json",
         "assets": [
           "frontend/apps/ngapp/src/favicon.ico",

@@ -1,5 +1,6 @@
 package eu.ec.empl.edci.async.poc.controller;
 
+import eu.ec.empl.edci.async.poc.controller.model.UserRequestDTO;
 import eu.ec.empl.edci.async.poc.lib.LibService;
 import eu.ec.empl.edci.async.poc.service.ServiceOrchestrator;
 import org.junit.jupiter.api.Test;

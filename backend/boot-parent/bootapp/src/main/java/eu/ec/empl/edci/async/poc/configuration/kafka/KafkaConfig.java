@@ -1,4 +1,4 @@
-package eu.ec.empl.edci.async.poc.configuration;
+package eu.ec.empl.edci.async.poc.configuration.kafka;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;

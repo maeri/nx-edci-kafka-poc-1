@@ -2,6 +2,14 @@ bootlib:
   service:
     message: bootlibasdasdasd
 
+server:
+  port: 8080
+
+# frontend application
+frontend:
+  url: http://localhost
+  port: 1200
+
 spring:
   kafka:
     bootstrap-servers: localhost:9092
@@ -14,6 +22,7 @@ logging:
       # spring logging on error only
       springframework:
         web: ERROR
+        socket: DEBUG
       # kafka logging on error only
       apache:
         kafka: ERROR
